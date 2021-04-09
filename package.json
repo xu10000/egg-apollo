@@ -1,0 +1,14 @@
+{
+  "name": "@xu10000/egg-apollo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "lib.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "syncrequest": "^1.4.7"
+  }
+}
