@@ -1,8 +1,12 @@
 {
   "name": "@xu10000/egg-apollo",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "",
   "main": "lib.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xu10000/egg-apollo"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

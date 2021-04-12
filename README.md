@@ -20,7 +20,7 @@
 
    ````
    // 本地配置文件apollo设置
-     config.apollo = {
+     config.apolloArr = [{
        // 加载远程配置，如果false则仅从本地加载
        open: true,
        // 打印本地和远程merge后的配置
@@ -30,7 +30,17 @@
        appId: 'shopping',
        clusterName: 'local',
        namespaceName: 'TEST1.book',
-     };
+     },{
+       // 加载远程配置，如果false则仅从本地加载
+       open: true,
+       // 打印本地和远程merge后的配置
+       printKeyValue: true,
+       // apollo参数
+       url: 'http://x.x.x.x:8080/configfiles/json',
+       appId: 'shopping',
+       clusterName: 'local',
+       namespaceName: 'TEST1.book',
+     }];
    ````
 
    ```
