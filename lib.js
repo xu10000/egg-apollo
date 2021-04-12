@@ -15,7 +15,9 @@ module.exports = {
         //   .replace(/\]\"/g, ']');
         // console.log('\n----xxxxxxxxkey ', key);
 
-        data[key] = JSON.parse(data[key]);
+        data[key] = JSON.parse(data[key]
+          .replace(/\/n/g, "\\n")
+          .replace(/\/r/g, "\\r"))
       } catch (err) {
         app.logger.error(`apollo远程配置解析key-value出错：key: ${key}, data[key] ${data[key]}`);
         throw err;
@@ -31,6 +33,8 @@ module.exports = {
       if (unexpectKeys.includes(key)) {
         continue;
       }
+      // let value = 
+        // .replace(ddd)
       app.logger.info(`---------key: ${key}\n---------value: ${JSON.stringify(config[key])}`);
     }
     app.logger.info('   ==================  end print merged apollo  keyValue  ====================\n\n');
@@ -41,13 +45,19 @@ module.exports = {
       if (unexpectLocalKeys.includes(key)) {
         continue;
       }
-      console.warn(`${key}=${JSON.stringify(localConfig[key])}`);
+      let str = JSON.stringify(localConfig[key])
+        .replace(/\\n/g, "/n")
+        .replace(/\\r/g, "/r")
+
+      
+      console.warn(`${key}=${str}`);
     }
     console.warn('\n           ==================  end print local  keyValue  ====================\n\n');
   },
   mergeConfig(app, printKeyValue, remoteConfig) {
 
     for (const attr in remoteConfig) {
+      
       app.config[attr] = remoteConfig[attr];
     }
     // 日志输出合并后的config
