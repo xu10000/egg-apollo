@@ -59,6 +59,13 @@ module.exports = {
     for (const attr in remoteConfig) {
       
       app.config[attr] = remoteConfig[attr];
+      // 加入额外参数，有的启动要这个
+      // console.log('wwwww\n   ', app.config[attr])
+      if(app.config[attr] instanceof Object) {
+        app.config[attr].app = true;
+        app.config[attr].loadModel = true;
+      }
+      
     }
     // 日志输出合并后的config
     app.logger.debug('获取远程配置成功 '); // ${JSON.stringify(app.config.redis)}
