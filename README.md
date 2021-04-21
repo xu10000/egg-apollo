@@ -42,32 +42,16 @@
        namespaceName: 'TEST1.book',
      }];
    ````
-
+   ```
+   // 在项目根目录打印本地配置，用于复制到配置中心
+   // env 代表要打印文件的环境， 分为 local test pred prod
+   node node_modules/@xu10000/egg-apollo/printConfig.js env
+   ```
    ```
    // 在app.js文件的生命周期函数configWillLoad使用
    configWillLoad() {
-       // 打印本地配置，控制台输出的内容可复制到配置中心，避免繁琐的配置
-       const localConfig = require('./config/config.local')({
-         name: 'disable_name',
-         HOME: 'disable_HOME',
-       });
-       apollo.printLocalKeyValue(localConfig);
        // 从远程加载配置
        apollo.getRemoteConfig(this.app);
    }
    ```
-
-4. 如果配置后不生效，请在配置的对象多加一个app: true, 例子如下：
-
-```
- config.redis = {
-    client: {
-      port: 6379, // Redis port
-      host: '18.162.188.202', // Redis host
-      password: '',
-      db: 16,
-    },
-    app: true  // 多增加该字段，添加到配置中心
-  };
-```
-
+   
