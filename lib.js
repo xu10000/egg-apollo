@@ -16,8 +16,8 @@ module.exports = {
         // console.log('\n----xxxxxxxxkey ', key);
 
         data[key] = JSON.parse(data[key]
-          .replace(/\/n/g, "\\n")
-          .replace(/\/r/g, "\\r"))
+          .replace(/\/xztsdwkn/g, "\\n")
+          .replace(/\/xztsdwkr/g, "\\r"))
       } catch (err) {
         app.logger.error(`apollo远程配置解析key-value出错：key: ${key}, data[key] ${data[key]}`);
         throw err;
@@ -46,8 +46,8 @@ module.exports = {
         continue;
       }
       let str = JSON.stringify(localConfig[key])
-        .replace(/\\n/g, "/n")
-        .replace(/\\r/g, "/r")
+        .replace(/\\n/g, "/xztsdwkn")
+        .replace(/\\r/g, "/xztsdwkr")
 
       
       console.warn(`${key}=${str}`);
@@ -64,6 +64,7 @@ module.exports = {
       if(app.config[attr] instanceof Object) {
         app.config[attr].app = true;
         app.config[attr].loadModel = true;
+        app.config[attr].supportTimeCommand = true;
       }
       
     }
